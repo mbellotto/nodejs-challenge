@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-challenge",
+  "version": "1.0.0",
+  "description": "1. Create a DB using your preferred DBMS. Field “Id” should be auto-incremental, properties should be the same as on image. And you need to create a second table with the name “Fabrica” with “IdFab” as the primary key and foreign key of table products and the other field needs to be “descripcion” and need to be text typed having the name of the product.\r 2. Create and endpoint in node.js to GET all products grouped by FabricID (“IdFab”)\r 3. Create another endpoint, POST, to create a new product, it should insert a new\r product on the table “Productos” and “Fabrica”. The endpoint should validate each field and type, if creation is correct, you should send a “Status” field in response, with “true” Boolean value, and a “Payload” field with product information. If sent information is invalid related to types or missing fields, you should return a “400” error with a custom message saying “Missing information”.\r 4. Create a new endpoint in typescript to DELETE a product by ID.\r 5. All 3 endpoints should have their own controllers, and routes should be exported to\r the main server file.\r 6. Create an authentication method using JWT to secure endpoint calls by using\r “Bearer” token to authenticate.\r 7. Create a POSTMAN collection to make HTTP calls more simple.\r 8. Create 3 Unit Test using the preferred Testing library to test 3 endpoints.\r 9. Ideally create a “docker compose” file to create DB and run API easily.\r 10. Create a fork from original repo\r https://github.com/sebasworkana/nodejs-challenge.git and in your personal repository (forked repository) Create a new branch from master with you name and last name, and send a PR to this repo (master branch).",
+  "main": "server.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "dev": "nodemon src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "mbellotto",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.12.12",
+    "express": "^4.19.2",
+    "mysql2": "^3.9.7",
+    "typescript": "^5.4.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.0",
+    "ts-node": "^10.9.2"
+  }
+}

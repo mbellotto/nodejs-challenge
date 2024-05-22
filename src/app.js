@@ -1,6 +1,7 @@
 const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
+const productosRouter = require('./routes/productosRouter');
 
 const app = express();
 
@@ -20,16 +21,12 @@ app.all('*', (req, res, next) => {
 app.use('/health', (req, res) => {
     res.send('Ok');
 });
-app.use('/productos', (req, res) => {
-    const producto = {
-        Id: 1,
-        Descripcion: 'Primer Producto',
-        Precio: 1000.50,
-        Existencias: 2,
-        IdFab: 1
-    }
-    res.send({ status: 'Ok', producto });
+
+app.use('/auth', (req, res) => {
+    res.send('Granted');
 });
+
+app.use('/productos', productosRouter);
 
 app.use((req, res, next) => {
     res.status(404).send(`${req.method} ${req.url} not found`);

@@ -2,6 +2,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const express = require('express');
 const productosRouter = require('./routes/productosRouter');
+const authRouter = require('./routes/authRouter');
 
 const app = express();
 
@@ -22,9 +23,7 @@ app.use('/health', (req, res) => {
     res.send('Ok');
 });
 
-app.use('/auth', (req, res) => {
-    res.send('Granted');
-});
+app.use('/auth', authRouter);
 
 app.use('/productos', productosRouter);
 

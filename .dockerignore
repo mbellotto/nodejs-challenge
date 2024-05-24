@@ -1,0 +1,5 @@
+.vscode
+db_schema
+docker
+node_modules
+dist

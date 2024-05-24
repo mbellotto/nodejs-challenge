@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
 const http = require('http');
+require('dotenv').config();
 const app = require('./app');
+
 
 const server = http.createServer(app);
 
-const port = process.env.PORT || '3101';
+const port = process.env.APP_PORT || '3000';
 
 server.listen(port);
 
@@ -30,3 +32,5 @@ server.on('listening', () => {
     const addr = server.address();
     console.log(`server is listening at ${JSON.stringify(addr)}`);
 });
+
+module.exports = server;

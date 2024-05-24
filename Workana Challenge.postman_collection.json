@@ -1,0 +1,198 @@
+{
+	"info": {
+		"_postman_id": "e841129b-bd12-4978-8f75-10252efe0bb2",
+		"name": "Workana Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1669797"
+	},
+	"item": [
+		{
+			"name": "GET /health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3101/health",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3101",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET /productos/byFabrica",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3101/productos/byFabrica",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3101",
+					"path": [
+						"productos",
+						"byFabrica"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE /productos/:id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3101/productos/23",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3101",
+					"path": [
+						"productos",
+						"23"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /productos",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{AuthorizationHeader}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1iZWxsb3R0byIsImlhdCI6MTcxNjQ0ODQzNSwiZXhwIjoxNzE3MDUzMjM1fQ.FeuMwsvBv_mg_eExon9SI2FhxNEzbKEQt18ekeObpDA",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImpvaG5xIiwiaWF0IjoxNzE2NTExMzIzLCJleHAiOjE3MTcxMTYxMjN9.0L_LreFPxfXysnb1_qy8nIlrH7FW7kdvcv-4EzhS-J4",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"Descripcion\": \"Decimo Producto\",\r\n    \"Precio\": \"18.45\",\r\n    \"Existencias\": 1,\r\n    \"Id\": 39\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3101/productos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3101",
+					"path": [
+						"productos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /auth/login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var responsePayload = JSON.parse(responseBody);\r",
+							"pm.collectionVariables.set(\"AuthorizationHeader\", responsePayload.token);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"johnq\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3101/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3101",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST /auth/register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"mbellotto\",\r\n    \"name\": \"mbellotto\",\r\n    \"email\": \"mbellotto@users.com\",\r\n    \"password\": \"password\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3101/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3101",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "AuthorizationHeader",
+			"value": ""
+		}
+	]
+}
